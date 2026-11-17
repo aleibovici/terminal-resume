@@ -6,6 +6,8 @@ A **remote-access / BBS-style** résumé site in the browser: fake dial-up login
 
 **Cursor Apps:** Published as **bbs** (`https://bbs.apps.grok.bot`). Republish from a **repo-linked Cloud Agent on this repository** (`publish-app`), not from the blog monorepo.
 
+**Origin:** GitHub is the source of truth here. An Origin mirror (e.g. `andre1/terminal-resume`) is not set up yet — create it in the Origin UI if you want a copy there.
+
 Built for local dev and **Cursor Apps** publish (`npm run build && npm start` — Express serves `public/` plus WebSocket `/ws`).
 
 **Privacy:** Login names are not written to disk. `LAST` / `USERS` store only aggregate timestamps and counters. “Your last visit” is per browser tab (server memory). The `SYMMETRIC` phrase is a BBS easter egg (cosmetic SysOp banner + badge), not authentication.
