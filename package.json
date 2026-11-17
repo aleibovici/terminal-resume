@@ -1,0 +1,19 @@
+{
+  "name": "terminal-resume",
+  "version": "0.3.1",
+  "description": "Terminal-aesthetic résumé site for Andre Leibovici (remote-access login, ANSI, xterm.js)",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/verify-build.js",
+    "start": "node index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

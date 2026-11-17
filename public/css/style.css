@@ -1,0 +1,214 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #0a0a0c;
+  color: #b8f0c8;
+  font-family: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+}
+
+html[data-theme="amber"],
+html[data-theme="amber"] body {
+  background: #0c0906;
+  color: #ffc966;
+}
+
+.crt-frame {
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  background: radial-gradient(ellipse at center, #141820 0%, #08090c 70%);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+}
+
+.status-bar,
+.hint-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #6a9a7a;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.status-bar {
+  margin-bottom: 0.5rem;
+}
+
+.hint-bar {
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4040;
+  box-shadow: 0 0 8px #ff4040;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.led.online {
+  background: #40ff80;
+  box-shadow: 0 0 8px #40ff80;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.terminal-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 0.5rem;
+}
+
+.terminal-split.rip-active .terminal-host {
+  min-height: 280px;
+  flex: 1;
+}
+
+.rip-pane {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem 0.25rem;
+  border: 1px dashed #2a4034;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.terminal-split.rip-active .rip-pane {
+  display: flex;
+}
+
+.rip-pane.hidden {
+  display: none !important;
+}
+
+.rip-banner {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #6a9a7a;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+html[data-theme="amber"] .rip-banner {
+  color: #a88444;
+}
+
+html[data-theme="amber"] .rip-pane {
+  border-color: #4a3820;
+}
+
+#rip-canvas {
+  display: block;
+  max-width: 100%;
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+.terminal-host {
+  flex: 1;
+  min-height: 480px;
+  border: 2px solid #2a4034;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background: #050608;
+  box-shadow:
+    inset 0 0 40px rgba(80, 255, 140, 0.04),
+    0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+html[data-theme="amber"] .status-bar,
+html[data-theme="amber"] .hint-bar {
+  color: #a88444;
+}
+
+html[data-theme="amber"] .crt-frame {
+  background: radial-gradient(ellipse at center, #1c1408 0%, #0a0804 70%);
+}
+
+html[data-theme="amber"] .terminal-host {
+  border-color: #4a3820;
+  background: #0a0804;
+  box-shadow:
+    inset 0 0 40px rgba(255, 200, 80, 0.05),
+    0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+html[data-theme="amber"] .led.online {
+  background: #ffb040;
+  box-shadow: 0 0 8px #ffb040;
+}
+
+.xterm {
+  height: 100%;
+}
+
+.xterm-viewport {
+  background-color: transparent !important;
+}
+
+/* Baud-era CRT polish (?baud=300|2400|14400|57600) */
+html[data-baud="300"] .terminal-host {
+  filter: blur(0.35px);
+}
+
+html[data-baud="2400"] .terminal-host {
+  filter: none;
+}
+
+html[data-baud="14400"] .terminal-host {
+  filter: blur(0.05px);
+}
+
+html[data-baud="57600"] .terminal-host {
+  filter: none;
+}
+
+html[data-baud="300"] .crt-frame::after,
+html[data-baud="2400"] .crt-frame::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.35;
+}
+
+html[data-baud="300"] .crt-frame::after {
+  opacity: 0.55;
+}
+
+html[data-baud="57600"] .crt-frame::after {
+  opacity: 0.08;
+}
+
+.crt-frame {
+  position: relative;
+}

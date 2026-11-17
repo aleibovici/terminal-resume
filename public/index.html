@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andre Leibovici — Terminal Résumé</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/vendor/xterm/xterm.min.css" />
+  </head>
+  <body>
+    <div class="crt-frame">
+      <header class="status-bar">
+        <span class="led"></span>
+        <span id="status-text">CONNECTING…</span>
+        <span class="status-right">ANSI • 80×24</span>
+      </header>
+      <div id="terminal-split" class="terminal-split">
+        <section
+          id="rip-pane"
+          class="rip-pane hidden"
+          aria-hidden="true"
+          aria-label="RIP graphics screen"
+        >
+          <div class="rip-banner" id="rip-banner">!|RIPscrip 1.54 emulation</div>
+          <canvas id="rip-canvas" width="640" height="350" role="img"></canvas>
+        </section>
+        <main id="terminal" class="terminal-host" aria-label="Résumé terminal"></main>
+      </div>
+      <footer class="hint-bar">
+        <span>Login: any password · modem sfx on connect</span>
+        <span>RIP/G graphics · 1–4 résumé · WHOIS · TEXT exits graphics</span>
+      </footer>
+    </div>
+    <script src="/vendor/xterm/xterm.min.js"></script>
+    <script src="/vendor/addon-fit/addon-fit.min.js"></script>
+    <script src="/js/modem-audio.js"></script>
+    <script src="/js/baud-throttle.js"></script>
+    <script src="/js/themes.js"></script>
+    <script src="/js/badges.js"></script>
+    <script src="/js/terminal-sfx.js"></script>
+    <script src="/js/rip-screen.js"></script>
+    <script src="/js/terminal.js"></script>
+  </body>
+</html>
